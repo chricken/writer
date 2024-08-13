@@ -1,0 +1,4 @@
+Ich brauche eine Datenbank für Geschichte
+Ein Dokument je Geschichte mit Contents.
+Jedes Content-Element enthält den Stil das Elementes, den Inhalt
+Im Dokument werden auch die Styles abgelegt.

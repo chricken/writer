@@ -1,3 +1,5 @@
+@import './content.css';
+
 main {
     position: relative;
 
@@ -5,7 +7,11 @@ main {
     flex-direction: row;
 }
 
-aside {
+.spalte:nth-of-type(1) {
     border: 1px solid #ccc;
-    flex-basis: 50%;
+    flex-basis: 60%;
+}
+.spalte:nth-of-type(2) {
+    border: 1px solid #ccc;
+    flex-basis: 40%;
 }
