@@ -1,0 +1,11 @@
+main {
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+}
+
+aside {
+    border: 1px solid #ccc;
+    flex-basis: 50%;
+}
