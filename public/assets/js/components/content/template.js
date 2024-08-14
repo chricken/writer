@@ -5,7 +5,11 @@ template.className = 'container';
 const elText = document.createElement('p');
 elText.contentEditable = true;
 elText.innerHTML = 'empty';
+elText.className = 'text'
 template.append(elText);
+
+const elSettings = document.createElement('content-setting');
+template.append(elSettings);
 
 // STYLE
 const elStyle = document.createElement('link');

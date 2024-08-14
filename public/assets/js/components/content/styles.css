@@ -2,28 +2,49 @@
     position: relative;
     padding: 2px;
     margin-bottom: 5px;
+    border: 1px solid rgba(0, 0, 0, .1);
     border-left: 5px solid var(--color-trenner);
+    border-radius: 2px;
 
     .settings {
         opacity: .2;
         position: absolute;
-        top:-5px;
-        right:10px;
+        top: -5px;
+        right: 10px;
     }
+}
+
+.container:focus-within {
+    border: 1px solid rgba(0, 0, 0, .5);
+    border-left: 5px solid var(--color-dunkel);
+    background-color: rgb(235, 232, 227);
 }
 
 .container p {
     position: relative;
-    margin:5px;
+    margin: 5px;
     margin-left: 10px;
+    margin-right: 140px;
 }
 
 .container p:focus {
-    background-color: rgb(235, 232, 227);
-    outline: 2px solid rgb(145, 145, 136);
-    border-radius: 2px;
+    outline: none;
 
     .settings {
         opacity: 1
     }
+}
+
+content-setting {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    opacity: 0;
+    width: 130px;
+    transition: all 500ms ease;
+}
+
+.container:focus-within content-setting {
+    opacity: 1;
+
 }

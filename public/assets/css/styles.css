@@ -2,18 +2,23 @@
 @import './macro.css';
 @import './formats.css';
 @import './meta.css';
+@import './fonts.css';
 
 :root {
     --color-trenner: rgb(151, 151, 148);
+    --color-dunkel: rgb(131, 131, 125);
     --abstand: 10px;
+    --color-contrast: rgb(129, 26, 26);
 }
 
 html,
 body {
     position: relative;
     display: block;
+    font-family: 'allerregular', sans-serif;
     padding: 0;
     margin: 0;
     background-color: #dad7d0;
+    font-size: 14px;
 }
 

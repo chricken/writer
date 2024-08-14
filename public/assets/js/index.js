@@ -2,35 +2,19 @@
 
 import './components/content/index.js';
 import dom from './dom.js';
-
-// KONSTANTEN / VARIABLEN
-const elements = {};
-
-// FUNKTIONEN
-const domMapping = () => {
-    elements.contents = dom.$$('.content');
-    elements.spalteContents=dom.$('#spalteContents');
-}
-
-const handleInput = evt =>{
-    console.log(evt.target.innerText);
-    
-}
-
-const appendEventlisteners = () => {
-    elements.contents.forEach(content => {
-        content.addEventListener('input', handleInput)
-    })
-}
+import ajax from './ajax.js';
+import render from './render.js';
+import settings from './settings.js';
 
 const init = () => {
-    domMapping();
-    appendEventlisteners();
+    dom.mapping();
+    dom.appendEventlisteners();
 
-    const newEditable = dom.create({
-        type:'content-edit',
-        parent: elements.spalteContents
-    })
+    ajax.loadSingleStory('2f1234228c9deac74968b652e500b166').then(
+        render.story
+    ).catch(
+        console.warn
+    )
 
 }
 

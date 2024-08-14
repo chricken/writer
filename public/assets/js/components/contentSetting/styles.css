@@ -1,0 +1,12 @@
+.container {
+    position: relative;
+    padding: 5px;
+    background: #ebe5e5;
+    border-radius: 3px;
+    border: 1px solid var(--color-trenner);
+}
+
+h4 {
+    position: relative;
+    margin:0;
+}
