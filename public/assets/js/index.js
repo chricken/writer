@@ -1,6 +1,7 @@
 'use strict';
 
-import dom from './dom.js'
+import './components/content/index.js';
+import dom from './dom.js';
 
 // KONSTANTEN / VARIABLEN
 const elements = {};
@@ -8,6 +9,7 @@ const elements = {};
 // FUNKTIONEN
 const domMapping = () => {
     elements.contents = dom.$$('.content');
+    elements.spalteContents=dom.$('#spalteContents');
 }
 
 const handleInput = evt =>{
@@ -24,6 +26,12 @@ const appendEventlisteners = () => {
 const init = () => {
     domMapping();
     appendEventlisteners();
+
+    const newEditable = dom.create({
+        type:'content-edit',
+        parent: elements.spalteContents
+    })
+
 }
 
 // INIT

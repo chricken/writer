@@ -1,0 +1,5 @@
+#meta {
+    position: relative;
+    border-top: 2px solid var(--color-trenner);
+    padding-top: var(--abstand);
+}

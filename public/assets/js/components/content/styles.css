@@ -1,0 +1,29 @@
+.container {
+    position: relative;
+    padding: 2px;
+    margin-bottom: 5px;
+    border-left: 5px solid var(--color-trenner);
+
+    .settings {
+        opacity: .2;
+        position: absolute;
+        top:-5px;
+        right:10px;
+    }
+}
+
+.container p {
+    position: relative;
+    margin:5px;
+    margin-left: 10px;
+}
+
+.container p:focus {
+    background-color: rgb(235, 232, 227);
+    outline: 2px solid rgb(145, 145, 136);
+    border-radius: 2px;
+
+    .settings {
+        opacity: 1
+    }
+}

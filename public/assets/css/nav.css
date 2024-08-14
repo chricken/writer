@@ -1,0 +1,16 @@
+nav {
+    img {
+        position: relative;
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        vertical-align: middle;
+        margin-left: var(--abstand);
+    }
+
+    .link {
+        position: relative;
+        display: inline-block;
+        margin:10px;
+    }
+}

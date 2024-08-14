@@ -1,17 +1,19 @@
-@import './content.css';
+@import './nav.css';
+@import './macro.css';
+@import './formats.css';
+@import './meta.css';
 
-main {
+:root {
+    --color-trenner: rgb(151, 151, 148);
+    --abstand: 10px;
+}
+
+html,
+body {
     position: relative;
-
-    display: flex;
-    flex-direction: row;
+    display: block;
+    padding: 0;
+    margin: 0;
+    background-color: #dad7d0;
 }
 
-.spalte:nth-of-type(1) {
-    border: 1px solid #ccc;
-    flex-basis: 60%;
-}
-.spalte:nth-of-type(2) {
-    border: 1px solid #ccc;
-    flex-basis: 40%;
-}

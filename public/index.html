@@ -5,29 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Titel</title>
+    <title>Writer</title>
     <link rel="stylesheet" href="./assets/css/styles.css" />
-
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <script src="./assets/js/index.js" type="module" defer></script>
 </head>
 
 <body>
-    <main>
-        <div class="spalte">
-            <div class="content" contenteditable>
-                Hallo welt
-            </div>
-            <div class="content" contenteditable>
-                Alles ist irgendwie
-            </div>
-            <div class="content" contenteditable>
-                Planeten
+    <nav>
+        <img src="./assets/img/logo_64.png">
+        <div class="link linkLoad">Load</div>
+        <div class="link linkSave">Save</div>
+        <div class="link linkSettings">Settings</div>
+    </nav>
+    <div class="spalte" id="spalteContents">
+        <div class="content" contenteditable>
+            Hallo welt
+            <div class="settings">
+                Style: <select class="selStyle">
+                    <option value="p">Fließtext</option>
+                    <option value="b">Hervorhebung</option>
+                    <option value="citation">Zitat</option>
+                    <option value="h3">Absatz-Header</option>
+                    <option value="h2">Kapitel-Header</option>
+                    <option value="h1">Titel</option>
+                </select>
             </div>
         </div>
-        <div class="spalte">
+        <div class="content" contenteditable>
+            Alles ist irgendwie
+            <div class="settings">
+                Style: <select class="selStyle">
+                    <option value="p">Fließtext</option>
+                    <option value="b">Hervorhebung</option>
+                    <option value="citation">Zitat</option>
+                    <option value="h3">Absatz-Header</option>
+                    <option value="h2">Kapitel-Header</option>
+                    <option value="h1">Titel</option>
+                </select>
+            </div>
+        </div>
+        <div class="content" contenteditable>
+            Planeten
+            <div class="settings">
+                Style: <select class="selStyle">
+                    <option value="p">Fließtext</option>
+                    <option value="b">Hervorhebung</option>
+                    <option value="citation">Zitat</option>
+                    <option value="h3">Absatz-Header</option>
+                    <option value="h2">Kapitel-Header</option>
+                    <option value="h1">Titel</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="spalte">
+        <div id="formats">
+            Hier kommt die Formatierung hinein
+        </div>
+        <div id="meta">
             Hier kommt die Datenbank hinein
         </div>
-    </main>
+    </div>
+    <div class="spalte">
+
+    </div>
 </body>
 
 </html>
