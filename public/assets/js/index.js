@@ -20,17 +20,22 @@ const init = () => {
         console.warn
     )
         */
-    let elModal = dom.create( {
-        type:'custom-modal',
+    let elModal = dom.create({
+        type: 'custom-modal',
         parent: document.body,
-        attr:{
+        attr: {
             header: 'Load Story'
         }
     })
 
-    dom.create({
-        type:'modal-content-load',
+    const modalLoad = dom.create({
+        type: 'modal-content-load',
         parent: elModal
+    })
+
+    modalLoad.addEventListener('selected', evt => {
+        console.log('Load this', evt.detail.storyID);
+
     })
 }
 

@@ -11,15 +11,21 @@ class ModalLoad extends HTMLElement {
         this.root.append(template.cloneNode(true));
     }
 
-    onClick(id){
-        console.log(id);
-        
+    onClick(id) {
+        // console.log(id);
+        const myEvent = new CustomEvent('selected', {
+            detail: {
+                storyID: id
+            }
+        })
+
+        this.dispatchEvent(myEvent);
     }
 
     connectedCallback() {
         const elContent = this.root.querySelector('.frame');
         ajax.loadList().then(
-            res => render.list(res, elContent, this.onClick)
+            res => render.list(res, elContent, this.onClick.bind(this))
         ).catch(
             console.warn
         )
