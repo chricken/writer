@@ -1,0 +1,64 @@
+.bg {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    /* Vertikale Zentrierung */
+    justify-content: center;
+    /* Horizontale Zentrierung */
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, .85);
+}
+
+.frame {
+    position: relative;
+    min-width: 50%;
+    min-height: 50%;
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: var(--abstand);
+    box-shadow: 3px 3px 20px 8px rgba(0, 0, 0, .2);
+}
+
+.frame h2 {
+    position: absolute;
+    left: var(--abstand);
+    top: -80px;
+    font-size: 40px;
+}
+
+.content {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    top: 50px;
+    border: 1px solid #aaa;
+}
+
+.btn {
+    position: relative;
+    background-color: #ccc;
+    margin: var(--abstand);
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #aaa;
+    border-radius: var(--abnstand);
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.btn:hover {
+    background-color: #fff;
+}
+
+.btn.btnClose {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}

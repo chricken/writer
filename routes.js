@@ -6,7 +6,11 @@ import db from './db.js';
 const router = Router();
 
 router.get('/allStories', (request, response) => {
-
+    db.loadAllStories().then(
+        res => response.json(res)
+    ).catch(
+        console.warn
+    )
 })
 
 router.route('/story')

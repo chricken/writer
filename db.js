@@ -14,6 +14,9 @@ const db = {
         const myDB = dbConn.use(settings.dbNames.stories);
         return myDB.insert(story);        
     },
+    loadAllStories(){
+
+    },
     init() {
         return new Promise((resolve, reject) => {
             return dbConn.list().then(

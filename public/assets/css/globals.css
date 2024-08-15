@@ -1,0 +1,11 @@
+/*
+    Diese Datei enthält alle Stlyles, die über die gesamte App gelten sollen, inklusive Webcompnents, etc. 
+    Hier sollen Dinge wie Überschrifte, Listen etc. behandelt werden
+*/
+
+h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    display: block;
+    font-weight: normal;
+    font-family: allerbold;
+}
