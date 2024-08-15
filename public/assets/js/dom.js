@@ -56,13 +56,15 @@ const dom = {
         return [...document.querySelectorAll(selector)];
     },
     
-    mapping() {
+    mapping() { 
         elements.spalteContents = dom.$('#spalteContents');
         elements.btnSave = dom.$('.linkSave');
+        elements.btnLoad = dom.$('.linkLoad');
     },
 
     appendEventlisteners() {
         elements.btnSave.addEventListener('click', ajax.saveSingleStory);
+        elements.btnLoad.addEventListener('click', ajax.loadStorySelection);
     }
 }
 

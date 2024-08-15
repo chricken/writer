@@ -1,34 +1,53 @@
 nav {
-    position:fixed;
-    left:0;
-    top:0;
-    right:0;
-    height:50px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 50px;
 }
 
-.spalte {
+.spalten {
     position: fixed;
-    top: 50px;
-    bottom:var(--abstand);
-    border: 2px solid  var(--color-trenner);
+    top: 55px;
+    bottom:130px;
+    left: 5px;
+    right: 5px;
+}
+
+.spalte,
+.messages {
+    border: 2px solid var(--color-trenner);
     padding: var(--abstand);
     border-radius: 5px;
     overflow-y: auto;
     background-color: #fff;
-    box-shadow: 1px 1px 4px 2px rgba(0,0,0,.2);
+    box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, .2);
+}
+.spalte {
+    position: absolute;
+    top: 0;
+    bottom: 0;
 }
 
-.spalte:nth-of-type(1) {
-    left: .3%;
-    right: 40%;
+#spalteContents {
+    left:0;
+    right: 505px;
 }
 
-.spalte:nth-of-type(2) {
-    left: 60.2%;
-    right: 10%;
+#spalteMeta {
+    right: 145px;
+    width: 335px;
 }
 
-.spalte:nth-of-type(3) {
-    left: 90.2%;
-    right: .2%;
+#spalteStruktur {
+    width:120px;
+    right: 0;
+}
+
+.messages {
+    position: fixed;
+   bottom:5px;
+   left:5px;
+   right:5px;
+   height: 100px;
 }

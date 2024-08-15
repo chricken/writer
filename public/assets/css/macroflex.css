@@ -1,0 +1,43 @@
+nav {
+    position:fixed;
+    left:0;
+    top:0;
+    right:0;
+    height:50px;
+}
+.spalten {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 55px; /* Abstand nach oben */
+}
+.spalte, .messages {
+    border: 2px solid  var(--color-trenner);
+    padding: var(--abstand);
+    border-radius: 5px;
+    overflow-y: auto;
+    background-color: #fff;
+    box-shadow: 1px 1px 4px 2px rgba(0,0,0,.2);
+}
+#spalteContents {
+    height: 60vh; /* 60% der Höhe */
+    width: 60%; /* Breite des linken Containers */
+    background-color: lightblue;
+}
+
+#spalteMeta {
+    height: 30vh; /* 30% der Höhe */
+    width: 30%; /* Breite des mittleren Containers */
+    background-color: lightgreen;
+}
+
+#spalteStruktur {
+    height: 10vh; /* 10% der Höhe */
+    width: 10%; /* Breite des rechten Containers */
+    background-color: lightcoral;
+}
+.messages {
+    height: 10vh; /* 10% der Höhe */
+    width: 100%; /* Über die gesamte Breite */
+    background-color: yellow;
+    margin-top: 10%; /* Abstand nach oben */
+}

@@ -13,30 +13,8 @@ const init = () => {
     dom.mapping();
     dom.appendEventlisteners();
 
-    /*
-    ajax.loadSingleStory('2f1234228c9deac74968b652e500b166').then(
-        render.story
-    ).catch(
-        console.warn
-    )
-        */
-    let elModal = dom.create({
-        type: 'custom-modal',
-        parent: document.body,
-        attr: {
-            header: 'Load Story'
-        }
-    })
+   ajax.loadStorySelection();
 
-    const modalLoad = dom.create({
-        type: 'modal-content-load',
-        parent: elModal
-    })
-
-    modalLoad.addEventListener('selected', evt => {
-        console.log('Load this', evt.detail.storyID);
-
-    })
 }
 
 // INIT

@@ -2,11 +2,38 @@
 
 import settings from './settings.js';
 import render from './render.js';
+import dom from './dom.js';
 
 const ajax = {
-    loadListOfStories() {
+    loadStorySelection() {
 
+        let elModal = dom.create({
+            type: 'custom-modal',
+            parent: document.body,
+            attr: {
+                header: 'Load Story'
+            }
+        })
+    
+        dom.create({
+            type: 'modal-content-load',
+            parent: elModal,
+            listeners: {
+                selected(evt) {
+                    // Modal entfernen
+                    elModal.remove();
+    
+                    // Story laden
+                    ajax.loadSingleStory(evt.detail.storyID).then(
+                        render.story
+                    ).catch(
+                        console.warn
+                    )
+                }
+            }
+        })
     },
+
     loadSingleStory(id) {
         return fetch(`/story?id=${id}`).then(
             res => res.json()

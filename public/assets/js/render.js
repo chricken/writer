@@ -8,14 +8,12 @@ const render = {
         elements.spalteContents.innerHTML = '';
 
         contents.paragraphs.forEach(paragraph => {
-            
+
             const elParagraph = document.createElement('content-editable');
             elements.spalteContents.append(elParagraph);
             elParagraph.init({ paragraph, styles: contents.styles });
 
-            elParagraph.addEventListener('changed', evt => {
-                // console.log(evt);                
-            })
+            elParagraph.addEventListener('changed', evt => { })
         })
     }
 }
