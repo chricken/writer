@@ -58,11 +58,13 @@ const dom = {
     
     mapping() { 
         elements.spalteContents = dom.$('#spalteContents');
+        elements.btnNew = dom.$('.linkNew');
         elements.btnSave = dom.$('.linkSave');
         elements.btnLoad = dom.$('.linkLoad');
     },
 
     appendEventlisteners() {
+        elements.btnNew.addEventListener('click', ajax.newStory);
         elements.btnSave.addEventListener('click', ajax.saveSingleStory);
         elements.btnLoad.addEventListener('click', ajax.loadStorySelection);
     }

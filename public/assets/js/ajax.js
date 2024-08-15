@@ -5,6 +5,24 @@ import render from './render.js';
 import dom from './dom.js';
 
 const ajax = {
+    newStory() {
+
+        let elModal = dom.create({
+            type: 'custom-modal',
+            parent: document.body,
+            attr: {
+                header: 'Create New Story'
+            }
+        })
+
+        dom.create({
+            type: 'modal-content-new',
+            parent: elModal,
+            listeners: {}
+        })
+
+    },
+
     loadStorySelection() {
 
         let elModal = dom.create({
@@ -14,7 +32,7 @@ const ajax = {
                 header: 'Load Story'
             }
         })
-    
+
         dom.create({
             type: 'modal-content-load',
             parent: elModal,
@@ -22,7 +40,7 @@ const ajax = {
                 selected(evt) {
                     // Modal entfernen
                     elModal.remove();
-    
+
                     // Story laden
                     ajax.loadSingleStory(evt.detail.storyID).then(
                         render.story
@@ -41,6 +59,7 @@ const ajax = {
             res => settings.story = res
         )
     },
+
     saveSingleStory() {
         console.log('save', settings.story);
 
@@ -52,7 +71,7 @@ const ajax = {
             res => res.json()
         ).then(
             // res => settings.story = res
-        // ).then(
+            // ).then(
             res => ajax.loadSingleStory(res.id)
         ).then(
             render.story

@@ -3,6 +3,7 @@
 import './components/Content/index.js';
 import './components/Modal/index.js';
 import './components/ModalLoad/index.js';
+import './components/ModalNew/index.js';
 
 import dom from './dom.js';
 import ajax from './ajax.js';
