@@ -15,7 +15,10 @@ const db = {
         return myDB.insert(story);        
     },
     loadAllStories(){
-
+        const myDB = dbConn.use(settings.dbNames.stories);
+        return myDB.view('dd', 'viewAll').then(
+            res => res.rows.map(row => row.value)
+        )
     },
     init() {
         return new Promise((resolve, reject) => {

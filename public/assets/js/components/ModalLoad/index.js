@@ -1,20 +1,27 @@
 'use strict';
 
 import template from './template.js';
-import ajax from './ajax';
+import ajax from './ajax.js';
+import render from './render.js';
 
 class ModalLoad extends HTMLElement {
-    constructor(){
+    constructor() {
         super();
-        this.root = this.attachShadow({mode: 'closed'});
+        this.root = this.attachShadow({ mode: 'closed' });
         this.root.append(template.cloneNode(true));
     }
 
-    connectedCallback(){
+    onClick(id){
+        console.log(id);
+        
+    }
+
+    connectedCallback() {
+        const elContent = this.root.querySelector('.frame');
         ajax.loadList().then(
-            render.list
+            res => render.list(res, elContent, this.onClick)
         ).catch(
-            console.warn            
+            console.warn
         )
     }
 }

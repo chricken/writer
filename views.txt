@@ -1,0 +1,12 @@
+Views für Stories
+
+{
+  "_id": "_design/dd",
+  "_rev": "1-008ad8833387850fd8840c7f156ef641",
+  "views": {
+    "viewAll": {
+      "map": "function (doc) {\n  emit(\n    doc._id, {\n      id:doc._id,\n      title:doc.title,\n      size: doc.paragraphs.length\n  });\n}"
+    }
+  },
+  "language": "javascript"
+}

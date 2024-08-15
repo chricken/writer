@@ -5,9 +5,10 @@
 const template = document.createElement('div');
 template.className = 'container';
 
-// Überschrift
-
-
+// Frame
+const elFrame = document.createElement('div');
+elFrame.className = 'frame';
+template.append(elFrame);
 
 // STYLE
 const elStyle = document.createElement('link');
