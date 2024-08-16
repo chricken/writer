@@ -20,13 +20,21 @@ class Content extends HTMLElement {
         this.elements.settings = this.root.querySelector('content-setting')
     }
 
+    onChanged() {
+        const myEvent = new CustomEvent('changed', {
+            detail: {}
+        })
+
+        this.dispatchEvent(myEvent);
+    }
+
     init({ paragraph = {}, styles = {} }) {
         // Eigener Event zum dispatchen, wenn es eine Änderung gegeben hat
         const eventChange = new CustomEvent('changed', {
             detail: { paragraph }
         })
         this.elements.text.innerHTML = paragraph.content;
-        // console.log(paragraph);
+        console.log(paragraph, styles);
 
         // Eingetragene Daten in Objekt übertragen.
         // Da die Daten als Objekt übergeben wurden, dürfte die Änderung auch im Root zu sehen sein
@@ -43,9 +51,10 @@ class Content extends HTMLElement {
         this.root.append(elStyle);
         elStyle.innerHTML = '';
 
+        // CSS-Styles übertragen
         // Das hier kann ich vielleicht besser mit einem gobalen Style machen, der hier importiert wird? 
         // Aber ich gleube, hier kann ich nur Dateien einfügen. Deswegen lasse ich es erstemal so.
-        Object.entries(styles).forEach(([ key, val ]) => {
+        Object.entries(styles).forEach(([key, val]) => {
             elStyle.innerHTML += `.${key} {${val}}`;
         })
 
@@ -54,13 +63,25 @@ class Content extends HTMLElement {
             evt.stopPropagation();
             this.elements.text.focus();
         })
-        
+
         // Focus soll nicht entfernt werden, wenn das setting angeklickt wird
         this.elements.settings.addEventListener('click', evt => {
             evt.stopPropagation();
             // this.elements.text.focus();
         })
 
+        // Parameter an settings übergeben
+        this.elements.settings.init({
+            style: paragraph.style
+        })
+
+        // Wenn sich das Styling in den Settings ändert
+        this.elements.settings.addEventListener('selectedStyle', evt => {
+            console.log(evt.detail);
+            
+            paragraph.style = evt.detail.newStyle;
+            this.onChanged();
+        })
     }
 }
 

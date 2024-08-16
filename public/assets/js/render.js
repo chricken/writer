@@ -1,9 +1,10 @@
 'use strict';
 
-import { elements } from './settings.js';
+import settings, { elements } from './settings.js';
 
 const render = {
-    story(contents) {
+    story() {
+        const contents = settings.story;
         console.log('render', contents);
         elements.spalteContents.innerHTML = '';
 
@@ -13,7 +14,9 @@ const render = {
             elements.spalteContents.append(elParagraph);
             elParagraph.init({ paragraph, styles: contents.styles });
 
-            elParagraph.addEventListener('changed', evt => { })
+            elParagraph.addEventListener('changed', evt => {
+                render.story();
+            })
         })
     }
 }

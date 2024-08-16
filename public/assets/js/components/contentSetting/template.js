@@ -15,6 +15,7 @@ elStyling.append(headerStyling);
 
 // Selectfeld
 const selStyling = document.createElement('select');
+selStyling.className = 'selStyling';
 elStyling.append(selStyling)
 
 // Optionen

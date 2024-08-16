@@ -9,6 +9,7 @@ elText.className = 'text'
 template.append(elText);
 
 const elSettings = document.createElement('content-setting');
+
 template.append(elSettings);
 
 // STYLE
