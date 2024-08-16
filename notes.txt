@@ -2,3 +2,28 @@ Ich brauche eine Datenbank für Geschichte
 Ein Dokument je Geschichte mit Contents.
 Jedes Content-Element enthält den Stil das Elementes, den Inhalt
 Im Dokument werden auch die Styles abgelegt.
+
+Beispiel-Dokument:
+{
+  "_id": "274701ed6207e46bd6b9e6a208002095",
+  "_rev": "8-be7e9a3426f2c0b8871cf84082d82358",
+  "title": "Wutz",
+  "styles": {},
+  "paragraphs": [
+    {
+      "id": "abc",
+      "style": "p",
+      "content": "Es war eine stürmische Nacht, als Anna das alte, verlassene Herrenhaus am \nRande des Dorfes entdeckte. Der Regen prasselte unaufhörlich gegen die \nFenster, während der Wind durch die zerbrochenen Äste der Bäume heulte. \nDie Legenden über das Haus hatten sich wie ein Schatten über das Dorf \ngelegt – Geschichten von verfluchten Seelen und unerklärlichen \nErscheinungen, die jeden in die Flucht schlugen, der es wagte, das \nGrundstück zu betreten.</span>"
+    },
+    {
+      "id": "bbc",
+      "style": "p",
+      "content": "Mit\n einem mulmigen Gefühl in der Magengegend schlich Anna näher. Das \nknarrende Tor öffnete sich wie von Geisterhand, und sie konnte nicht \nanders, als einzutreten. Der Geruch von Moder und verrottendem Holz \nstieg ihr in die Nase, und die Dunkelheit schien sie zu umhüllen. \nPlötzlich vernahm sie ein leises Flüstern, das aus dem Inneren des \nHauses zu kommen schien – eine Stimme, die sie mit einem \nverführerischen, aber auch beunruhigenden Ton rief.</span>"
+    },
+    {
+      "id": "cbc",
+      "style": "p",
+      "content": "„Komm\n näher…“ hauchte es, und Anna spürte, wie eine Gänsehaut über ihren \nRücken lief. Was hatte sie sich nur gedacht? Doch die Neugier trieb sie \nweiter hinein, während der Wind draußen wütete und die Schatten um sie \nherum zu tanzen schienen.</span>"
+    }
+  ]
+}

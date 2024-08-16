@@ -1,56 +1,46 @@
 'use strict';
 
+import settings from '/assets/js/settings.js';
+
 const template = document.createElement('div');
 template.className = 'container';
 
 const elStyling = document.createElement('div');
 template.append(elStyling);
 
-const headerStyling = document.createElement('h4');
+// Select Styling
+const headerStyling = document.createElement('h5');
 headerStyling.innerHTML = 'Style: ';
-elStyling.append( headerStyling);
+elStyling.append(headerStyling);
 
 // Selectfeld
 const selStyling = document.createElement('select');
 elStyling.append(selStyling)
 
 // Optionen
-let opt = document.createElement('option');
-opt.innerHTML = 'Fließtext';
-opt.value = 'p';
-selStyling.append(opt);
+Object.entries(settings.styles).forEach(([key, val]) => {
+    let opt = document.createElement('option');
+    opt.innerHTML = val;
+    opt.value = key;
+    selStyling.append(opt);
+})
 
-opt = document.createElement('option');
-opt.innerHTML = 'Hervorhebung';
-opt.value = 'b';
-selStyling.append(opt);
+// Eingabe der Scene
+const headerScene = document.createElement('h5');
+headerScene.innerHTML = 'Type of Scene: ';
+template.append(headerScene);
 
-opt = document.createElement('option');
-opt.innerHTML = 'Zitat';
-opt.value = 'citation';
-selStyling.append(opt);
-
-opt = document.createElement('option');
-opt.innerHTML = 'Absatz-Header';
-opt.value = 'h3';
-selStyling.append(opt);
-
-opt = document.createElement('option');
-opt.innerHTML = 'Kapitel-Header';
-opt.value = 'h2';
-selStyling.append(opt);
-
-opt = document.createElement('option');
-opt.innerHTML = 'Titel';
-opt.value = 'h1';
-selStyling.append(opt);
+const inpScene = document.createElement('input');
+inpScene.placeholder = 'Type of Scene';
+inpScene.type = 'text';
+template.append(inpScene);
 
 // STYLE
 const elStyle = document.createElement('link');
 elStyle.rel = 'stylesheet';
 
 // Aktuelle Adresse der JSDatei auslesen
-let localURL =  new URL(import.meta.url).pathname;
+let localURL = new URL(import.meta.url).pathname;
 
 // Dateiname der JS-Datei durch den Namen der CSS-Datei ersetzen
 let indexLastSlash = localURL.lastIndexOf('/');

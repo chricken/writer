@@ -6,7 +6,10 @@
     border: 1px solid var(--color-trenner);
 }
 
-h4 {
+h4, h5 {
     position: relative;
     margin:0;
+}
+input[type="text"]{
+    width: 120px;
 }

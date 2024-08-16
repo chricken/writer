@@ -3,7 +3,16 @@
 const settings = {
     elements: {},
     story: {},
-    styles: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'highlight', 'citation']
+    styles: {
+        p: 'Fließtext (default)', 
+        h1: 'StoryHeader', 
+        h2: 'Kapitelheader',
+        h3: 'Absatzheader', 
+        h4: 'Fließtextheader',
+        h5: 'Kleiner Header',
+        b: 'Hervorhebung', 
+        citation: 'Zitat'
+    }
 }
 
 export default settings;

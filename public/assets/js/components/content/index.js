@@ -17,6 +17,7 @@ class Content extends HTMLElement {
 
     domMapping() {
         this.elements.text = this.root.querySelector('.text')
+        this.elements.settings = this.root.querySelector('content-setting')
     }
 
     init({ paragraph = {}, styles = {} }) {
@@ -42,8 +43,8 @@ class Content extends HTMLElement {
         this.root.append(elStyle);
         elStyle.innerHTML = '';
 
-        // Das hier kann ich vielleich tbesser mit einem gobalen Style machen, der hier importiert wird? 
-        // Aber ich gleube, hie rkann ich nur Dateien einfügen. Deswegen lasse ich es erstemal so.
+        // Das hier kann ich vielleicht besser mit einem gobalen Style machen, der hier importiert wird? 
+        // Aber ich gleube, hier kann ich nur Dateien einfügen. Deswegen lasse ich es erstemal so.
         Object.entries(styles).forEach(([ key, val ]) => {
             elStyle.innerHTML += `.${key} {${val}}`;
         })
@@ -52,6 +53,12 @@ class Content extends HTMLElement {
         this.addEventListener('click', evt => {
             evt.stopPropagation();
             this.elements.text.focus();
+        })
+        
+        // Focus soll nicht entfernt werden, wenn das setting angeklickt wird
+        this.elements.settings.addEventListener('click', evt => {
+            evt.stopPropagation();
+            // this.elements.text.focus();
         })
 
     }

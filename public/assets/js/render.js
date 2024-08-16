@@ -4,7 +4,7 @@ import { elements } from './settings.js';
 
 const render = {
     story(contents) {
-        // console.log('render', contents);
+        console.log('render', contents);
         elements.spalteContents.innerHTML = '';
 
         contents.paragraphs.forEach(paragraph => {

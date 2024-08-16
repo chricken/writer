@@ -2,7 +2,7 @@
 const template = document.createElement('div');
 template.className = 'container';
 
-const elText = document.createElement('p');
+const elText = document.createElement('div');
 elText.contentEditable = true;
 elText.innerHTML = 'empty';
 elText.className = 'text'

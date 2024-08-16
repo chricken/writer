@@ -8,7 +8,7 @@ class Story {
     } = {}) {
         this.title = title;
         this.owner = 'abc';
-        this.styles = settings.styles.reduce((obj, val) => {
+        this.styles = Object.keys(settings.styles).reduce((obj, val) => {
             obj[val] = '';
             return obj;
         }, {});
