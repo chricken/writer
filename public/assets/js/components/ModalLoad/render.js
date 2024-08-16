@@ -1,12 +1,23 @@
 'use strict';
 
 const render = {
-    list(data, parent, onClick) {
+    list(data, parent, onClick, onNew) {
 
         // console.log(parent);        
         console.log(data);
 
         parent.innerHTML = ''; //
+
+        // Button für eine neue Story
+        const elStory = document.createElement('div');
+        elStory.className = 'itemStory itemNew';
+        parent.append(elStory);
+
+        const elHeader = document.createElement('h4');
+        elHeader.innerHTML = 'New Story';
+        elStory.append(elHeader);
+
+        elStory.addEventListener('click', onNew);
 
         data.forEach(story => {
             const elStory = document.createElement('div');
@@ -29,7 +40,7 @@ const render = {
             elStory.addEventListener(
                 'click',
                 () => onClick(story.id)
-            ) 
+            )
         })
 
     }

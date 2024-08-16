@@ -12,7 +12,18 @@ class ModalNew extends HTMLElement {
 
 
     connectedCallback() {
-        
+        const btnCreate = this.root.querySelector('.btnCreate');
+        const inpTitle = this.root.querySelector('.inpTitle');
+
+        btnCreate.addEventListener('click',() => {
+            const myEvent = new CustomEvent('create', {
+                detail: {
+                    title: inpTitle.value
+                }
+            })
+    
+            this.dispatchEvent(myEvent);
+        })
     }
 }
 

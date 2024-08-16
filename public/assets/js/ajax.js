@@ -3,9 +3,10 @@
 import settings from './settings.js';
 import render from './render.js';
 import dom from './dom.js';
+import Story from './classes/Story.js';
 
 const ajax = {
-    newStory() {
+    newStorySelection() {
 
         let elModal = dom.create({
             type: 'custom-modal',
@@ -18,7 +19,12 @@ const ajax = {
         dom.create({
             type: 'modal-content-new',
             parent: elModal,
-            listeners: {}
+            listeners: {
+                create(evt) {
+                    elModal.remove();
+                    ajax.createNewStory(evt.detail);
+                }
+            }
         })
 
     },
@@ -47,9 +53,25 @@ const ajax = {
                     ).catch(
                         console.warn
                     )
+                },
+                createnew() {
+                    elModal.remove();
+
+                    // Neue Story erzeugen
+                    ajax.newStorySelection();
                 }
             }
         })
+    },
+
+    createNewStory(data) {
+        console.log(data);
+        const payload = new Story({
+            title: data.title
+        })
+        console.log(payload);
+        settings.story = payload;
+        ajax.saveSingleStory();
     },
 
     loadSingleStory(id) {

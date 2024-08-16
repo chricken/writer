@@ -64,7 +64,7 @@ const dom = {
     },
 
     appendEventlisteners() {
-        elements.btnNew.addEventListener('click', ajax.newStory);
+        elements.btnNew.addEventListener('click', ajax.newStorySelection);
         elements.btnSave.addEventListener('click', ajax.saveSingleStory);
         elements.btnLoad.addEventListener('click', ajax.loadStorySelection);
     }

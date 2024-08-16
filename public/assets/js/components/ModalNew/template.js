@@ -10,16 +10,24 @@ const elFrame = document.createElement('div');
 elFrame.className = 'frame';
 template.append(elFrame);
 
+// Title
 const parentTitle = document.createElement('p');
 elFrame.append(parentTitle);
 
 const legendTitle = document.createElement('span');
-legendTitle.innerHTML = 'Titel: ';
+legendTitle.innerHTML = 'Title: ';
 parentTitle.append(legendTitle);
 
 const inpTitle = document.createElement('input');
-inpTitle.placeholder = 'Titel';
+inpTitle.className = 'inpTitle';
+inpTitle.placeholder = 'Title';
 parentTitle.append(inpTitle);
+
+// Button 
+const btnCreate = document.createElement('button');
+btnCreate.innerHTML = 'Create';
+btnCreate.className = 'btnCreate';
+elFrame.append(btnCreate);
 
 // STYLE
 const elStyle = document.createElement('link');
