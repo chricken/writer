@@ -5,7 +5,7 @@ import settings, { elements } from './settings.js';
 const render = {
     story() {
         const contents = settings.story;
-        console.log('render', contents);
+        // console.log('render', contents);
         elements.spalteContents.innerHTML = '';
 
         contents.paragraphs.forEach(paragraph => {
@@ -17,6 +17,9 @@ const render = {
             elParagraph.addEventListener('changed', evt => {
                 render.story();
             })
+
+            const btnAddContent = document.createElement('add-content');
+            elements.spalteContents.append(btnAddContent);
         })
     }
 }

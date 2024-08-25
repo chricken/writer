@@ -34,7 +34,7 @@ class Content extends HTMLElement {
             detail: { paragraph }
         })
         this.elements.text.innerHTML = paragraph.content;
-        console.log(paragraph, styles);
+        // console.log(paragraph, styles);
 
         // Eingetragene Daten in Objekt übertragen.
         // Da die Daten als Objekt übergeben wurden, dürfte die Änderung auch im Root zu sehen sein

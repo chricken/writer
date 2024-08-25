@@ -11,8 +11,7 @@ class ContentSetting extends HTMLElement {
         this.elements = {
             selStyling: this.root.querySelector('.selStyling'),
         }
-        console.log(this.elements);
-        
+        // console.log(this.elements);
     }
 
     init({
