@@ -1,5 +1,6 @@
 'use strict';
 
+// Erzeugen eines neuen Textabschnittes in der Story. 
 class Scene {
     constructor(story) {
         this.id = (Math.random() * 1e17).toString(36);

@@ -11,16 +11,14 @@ class AddContent extends HTMLElement {
         this.root.append(template.cloneNode(true));
     }
 
-    addContent() {
-        const myEvent = new CustomEvent('add');
-
-        this.dispatchEvent(myEvent);
-    }
 
     // Eventlistener für Mounting
     connectedCallback() {
-        const container = document.querySelector('.container');
-        container.addEventListener('click', this.addContent)
+        const container = this.root.querySelector('.container');
+        container.addEventListener('click', () => {
+            const myEvent = new CustomEvent('add');
+            this.dispatchEvent(myEvent);
+        })
     }
 }
 
