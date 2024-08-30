@@ -3,6 +3,7 @@
 const settings = {
     elements: {},
     story: {},
+    activeElement:0,
     styles: {
         p: 'Fließtext (default)', 
         h1: 'StoryHeader', 

@@ -20,11 +20,10 @@ class Content extends HTMLElement {
         this.elements.settings = this.root.querySelector('content-setting')
     }
 
-    onChanged() {
-        const myEvent = new CustomEvent('changed', {
+    onChangedStyle() {
+        const myEvent = new CustomEvent('changedstyle', {
             detail: {}
         })
-
         this.dispatchEvent(myEvent);
     }
 
@@ -76,11 +75,11 @@ class Content extends HTMLElement {
         })
 
         // Wenn sich das Styling in den Settings ändert
-        this.elements.settings.addEventListener('selectedStyle', evt => {
-            console.log(evt.detail);
+        this.elements.settings.addEventListener('selectedstyle', evt => {
+            // console.log(evt.detail);
             
             paragraph.style = evt.detail.newStyle;
-            this.onChanged();
+            this.onChangedStyle();
         })
     }
 }

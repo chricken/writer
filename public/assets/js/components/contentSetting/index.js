@@ -23,9 +23,8 @@ class ContentSetting extends HTMLElement {
     }
 
     handleChangeStyling(evt){
-        console.log(evt);
-        
-        const myEvent = new CustomEvent('selectedStyle', {
+        // console.log(evt);
+        const myEvent = new CustomEvent('selectedstyle', {
             detail: {
                 newStyle: this.elements.selStyling.value
             }
