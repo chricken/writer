@@ -50,6 +50,8 @@ const ajax = {
                     // Story laden
                     ajax.loadSingleStory(evt.detail.storyID).then(
                         render.story
+                    ).then(
+                        render.formats
                     ).catch(
                         console.warn
                     )
@@ -69,7 +71,7 @@ const ajax = {
         const payload = new Story({
             title: data.title
         })
-        console.log(payload);
+        // console.log(payload);
         settings.story = payload;
         ajax.saveSingleStory();
     },
@@ -83,8 +85,6 @@ const ajax = {
     },
 
     saveSingleStory() {
-        console.log('save', settings.story);
-
         return fetch('/story', {
             method: 'put',
             headers: { 'content-type': 'application/json' },

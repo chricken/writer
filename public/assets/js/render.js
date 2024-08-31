@@ -2,6 +2,7 @@
 
 import settings, { elements } from './settings.js';
 import Scene from './classes/Abschnitt.js';
+import dom from './dom.js';
 
 const render = {
     addContent(index) {
@@ -11,13 +12,16 @@ const render = {
     },
     removeContent(index, text) {
         console.log(text.content);
-        
+
         if (confirm(`Soll der markierte Text wirklich entfernt werden?`)) {
             settings.story.paragraphs.splice(index, 1);
             render.story();
         }
     },
     story() {
+        // Container für alle Absätze leeren/initialisieren
+        elements.paragraphs = [];
+
         const contents = settings.story;
         // console.log('render', contents);
         elements.spalteContents.innerHTML = '';
@@ -31,6 +35,7 @@ const render = {
             btnAddContent.addEventListener('add', () => render.addContent(index))
 
             const elParagraph = document.createElement('content-editable');
+            elements.paragraphs.push(elParagraph);
             elements.spalteContents.append(elParagraph);
             elParagraph.init({ paragraph, styles: contents.styles });
 
@@ -59,6 +64,38 @@ const render = {
             // console.log(activeParagraph);            
             activeParagraph.click();
         }
+    },
+
+    formats() {
+        elements.formats.innerHTML = '';
+        
+        Object.entries(settings.styles).forEach(([style, legend]) => {
+            console.log(style, legend);
+            dom.create({
+                type: 'h4',
+                content: legend,
+                parent: elements.formats
+            })
+            
+            const taStyle = dom.create({
+                type: 'textarea',
+                parent: elements.formats,
+                cssClassName: 'wide',
+                content: settings.story.styles[style] || '',
+                listeners:{
+                    input(evt){
+                        settings.story.styles[style] = evt.target.value;
+                        elements.paragraphs.forEach(paragraph => {
+                            paragraph.updateStyle(settings.story.styles);
+                        })
+                    }
+                }
+            })
+            
+                
+        })
+
+
     }
 }
 

@@ -55,12 +55,14 @@ const dom = {
     $$(selector) {
         return [...document.querySelectorAll(selector)];
     },
-    
-    mapping() { 
+
+    mapping() {
         elements.spalteContents = dom.$('#spalteContents');
         elements.btnNew = dom.$('.linkNew');
         elements.btnSave = dom.$('.linkSave');
         elements.btnLoad = dom.$('.linkLoad');
+
+        elements.formats = dom.$('#spalteMeta #formats');
     },
 
     appendEventlisteners() {

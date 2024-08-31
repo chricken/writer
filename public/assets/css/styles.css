@@ -4,6 +4,7 @@
 @import './formats.css';
 @import './meta.css';
 @import './fonts.css';
+@import './globals.css';
 
 :root {
     --color-trenner: rgb(151, 151, 148);

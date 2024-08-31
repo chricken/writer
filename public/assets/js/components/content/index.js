@@ -30,6 +30,16 @@ class Content extends HTMLElement {
         this.dispatchEvent(myEvent);
     }
 
+    updateStyle(styles) {
+        const elStyle = this.root.querySelector('style.customStyles');
+        elStyle.innerHTML = '';
+
+        Object.entries(styles).forEach(([key, val]) => {
+            elStyle.innerHTML += `.${key} {${val}}`;
+        })
+
+    }
+
     init({ paragraph = {}, styles = {} }) {
         // Eigener Event zum dispatchen, wenn es eine Änderung gegeben hat
         const eventChange = new CustomEvent('changed', {
@@ -59,6 +69,7 @@ class Content extends HTMLElement {
 
         // Klasse in CSS eintragen, die per Parameter übergeben wurde
         const elStyle = document.createElement('style');
+        elStyle.className = 'customStyles';
         this.root.append(elStyle);
         elStyle.innerHTML = '';
 

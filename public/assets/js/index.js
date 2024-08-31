@@ -8,8 +8,6 @@ import './components/ModalNew/index.js';
 
 import dom from './dom.js';
 import ajax from './ajax.js';
-import render from './render.js';
-import settings from './settings.js';
 
 const init = () => {
     dom.mapping();
