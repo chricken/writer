@@ -26,7 +26,7 @@ Object.entries(settings.styles).forEach(([key, val]) => {
     selStyling.append(opt);
 })
 
-// Eingabe der Scene
+// Eingabe der Scene 
 const headerScene = document.createElement('h5');
 headerScene.innerHTML = 'Type of Scene: ';
 template.append(headerScene);
@@ -35,6 +35,13 @@ const inpScene = document.createElement('input');
 inpScene.placeholder = 'Type of Scene';
 inpScene.type = 'text';
 template.append(inpScene);
+
+// Element entfernen
+const btnRemoveParagraph = document.createElement('button');
+btnRemoveParagraph.className = 'btnRemoveParagraph';
+template.append(btnRemoveParagraph);
+btnRemoveParagraph.innerHTML = 'Remove';
+
 
 // STYLE
 const elStyle = document.createElement('link');

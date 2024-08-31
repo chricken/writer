@@ -21,9 +21,12 @@ class Content extends HTMLElement {
     }
 
     onChangedStyle() {
-        const myEvent = new CustomEvent('changedstyle', {
-            detail: {}
-        })
+        const myEvent = new CustomEvent('changedstyle')
+        this.dispatchEvent(myEvent);
+    }
+
+    onRemoveContent() {
+        const myEvent = new CustomEvent('removeContent')
         this.dispatchEvent(myEvent);
     }
 
@@ -32,20 +35,29 @@ class Content extends HTMLElement {
         const eventChange = new CustomEvent('changed', {
             detail: { paragraph }
         })
+        const eventAddContent = new CustomEvent('addContent');
+
         this.elements.text.innerHTML = paragraph.content;
         // console.log(paragraph, styles);
 
         // Eingetragene Daten in Objekt übertragen.
         // Da die Daten als Objekt übergeben wurden, dürfte die Änderung auch im Root zu sehen sein
-        this.elements.text.addEventListener('input', () => {
+        this.elements.text.addEventListener('input', evt => {
             paragraph.content = this.elements.text.innerHTML;
             this.dispatchEvent(eventChange);
+        })
+
+        // Auf eine Strg-Enter reagieren
+        this.elements.text.addEventListener('keydown', evt => {
+            if (evt.ctrlKey && evt.keyCode == 13) {
+                this.dispatchEvent(eventAddContent);
+            }
         })
 
         // Klasse vergeben
         this.elements.text.classList.add(paragraph.style);
 
-        // Klasse in CSS eintragen
+        // Klasse in CSS eintragen, die per Parameter übergeben wurde
         const elStyle = document.createElement('style');
         this.root.append(elStyle);
         elStyle.innerHTML = '';
@@ -76,11 +88,15 @@ class Content extends HTMLElement {
 
         // Wenn sich das Styling in den Settings ändert
         this.elements.settings.addEventListener('selectedstyle', evt => {
-            // console.log(evt.detail);
-            
             paragraph.style = evt.detail.newStyle;
             this.onChangedStyle();
         })
+
+        // Wenn der Paragraph entfernt werden soll
+        this.elements.settings.addEventListener('removeContent', evt => {
+            this.onRemoveContent();
+        })
+
     }
 }
 

@@ -10,19 +10,26 @@ class ContentSetting extends HTMLElement {
         this.root.append(template.cloneNode(true));
         this.elements = {
             selStyling: this.root.querySelector('.selStyling'),
+            btnRemove: this.root.querySelector('.btnRemoveParagraph'),
         }
         // console.log(this.elements);
     }
 
     init({
-        style=''
-    }){
+        style = ''
+    }) {
         // Selectbox auf den aktuellen style setzen
         this.elements.selStyling.value = style;
-        this.elements.selStyling.addEventListener('change', this.handleChangeStyling.bind(this))
+        this.elements.selStyling.addEventListener('change', this.handleChangeStyling.bind(this));
+        this.elements.btnRemove.addEventListener('click', this.handleRemoveContent.bind(this));
     }
 
-    handleChangeStyling(evt){
+    handleRemoveContent(){
+        const myEvent = new CustomEvent('removeContent');
+        this.dispatchEvent(myEvent);
+    }
+
+    handleChangeStyling(evt) {
         // console.log(evt);
         const myEvent = new CustomEvent('selectedstyle', {
             detail: {
@@ -33,7 +40,7 @@ class ContentSetting extends HTMLElement {
         this.dispatchEvent(myEvent);
     }
 
-    connectedCallback(){
+    connectedCallback() {
         this.addEventListener('click', evt => evt.stopPropagation());
     }
 }
