@@ -4,7 +4,7 @@ const template = document.createElement('div');
 template.className = 'container';
 
 const elCross = document.createElement('div');
-elCross.innerHTML = '+';
+elCross.innerHTML = '+ Add Section';
 elCross.className = 'btnAddContent';
 template.append(elCross);
 

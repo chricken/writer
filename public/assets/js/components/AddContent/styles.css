@@ -1,23 +1,23 @@
 .container {
     position: relative;
     display: block;
-    background-color: rgba(91, 136, 91);
+    /* background-color: rgba(91, 136, 91); */
     height: 10px;
-    /* border: 2px dashed rgb(197, 206, 197); */
+    border: 2px solid rgb(72, 92, 72);
     border-radius: 5px;
-    margin-top: 5px;
-    margin-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     transition: all 300ms ease;
-    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, .02);
-    opacity:.1;
-    cursor:pointer;
-    
+    /* box-shadow: 0 2px 2px 2px rgba(0, 0, 0, .02); */
+    opacity: .1;
+    cursor: pointer;
+
     .btnAddContent {
         position: absolute;
         display: block;
-        width: 20px;
+        /* width: 20px; */
         height: 20px;
-        background-color: rgba(91, 136, 91);
+        /* background-color: rgba(91, 136, 91); */
         text-align: center;
         border-radius: 50%;
         font-size: 12px;
@@ -30,15 +30,16 @@
 
 .container:hover {
     height: 35px;
-    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, .5);
-    opacity:.8;
-    
+    /* box-shadow: 0 2px 2px 2px rgba(0, 0, 0, .5); */
+    opacity: 1;
+
     .btnAddContent {
-        width: 40px;
+        /* width: 40px; */
         height: 40px;
-        font-size: 30px;
-        color: rgb(255, 255, 255);
+        font-size: 24px;
+        color: rgb(72, 92, 72);
         top: 5px;
+        left: 5px;
     }
 
 }
