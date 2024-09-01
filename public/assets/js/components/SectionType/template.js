@@ -1,15 +1,12 @@
+'use strict';
 
 const template = document.createElement('div');
 template.className = 'container';
 
-const elText = document.createElement('div');
-elText.contentEditable = true;
-elText.innerHTML = 'empty';
-elText.className = 'text'
+const elText = document.createElement('p');
+elText.className = 'content';
+// elText.innerHTML = 'A Content';
 template.append(elText);
-
-const elSettings = document.createElement('content-setting');
-template.append(elSettings);
 
 // STYLE
 const elStyle = document.createElement('link');

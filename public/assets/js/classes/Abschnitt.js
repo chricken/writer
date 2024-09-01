@@ -12,7 +12,7 @@ class Scene {
         this.style = 'p';
         this.content = '';
         // Setting, in dem die Scene stattfindet. Dient zur Übersicht
-        this.type = 'default';
+        this.type = '';
     }
 }
 

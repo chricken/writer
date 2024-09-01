@@ -32,7 +32,7 @@ class ModalLoad extends HTMLElement {
     connectedCallback() {
         const elContent = this.root.querySelector('.frame');
         ajax.loadList().then(
-            res => render.list(res, elContent, this.onClick.bind(this), this.onNew.bind(this))
+            res => render.list.bind(this)(res, elContent, this.onClick.bind(this), this.onNew.bind(this))
         ).catch(
             console.warn
         )

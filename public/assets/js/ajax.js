@@ -67,7 +67,7 @@ const ajax = {
     },
 
     createNewStory(data) {
-        console.log(data);
+        // console.log(data);
         const payload = new Story({
             title: data.title
         })

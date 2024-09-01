@@ -1,11 +1,9 @@
 'use strict';
 
+import ajax from './ajax.js';
+
 const render = {
     list(data, parent, onClick, onNew) {
-
-        // console.log(parent);        
-        console.log(data);
-
         parent.innerHTML = ''; //
 
         // Button für eine neue Story
@@ -41,8 +39,28 @@ const render = {
                 'click',
                 () => onClick(story.id)
             )
-        })
 
+            // Button, um die Story zu löschen
+            const btnDelete = document.createElement('button');
+            btnDelete.innerHTML = 'Remove Story';
+            elStory.append(btnDelete);
+
+            btnDelete.addEventListener('click', evt => {
+                evt.stopPropagation();
+                if (confirm(`Soll diese Geschichte "${story.title}" unwiederbringlich gelöscht werden?`)) {
+                    ajax.deleteStory(story).then(
+                        ajax.loadList
+                    ).then(
+                        res => {
+                            const elContent = this.root.querySelector('.frame');
+                            render.list.bind(this)(res, elContent, this.onClick.bind(this), this.onNew.bind(this))
+                        }
+                    ).catch(
+                        console.warn
+                    );
+                }
+            })
+        })
     }
 }
 

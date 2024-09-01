@@ -20,11 +20,6 @@ class Content extends HTMLElement {
         this.elements.settings = this.root.querySelector('content-setting')
     }
 
-    onChangedStyle() {
-        const myEvent = new CustomEvent('changedstyle')
-        this.dispatchEvent(myEvent);
-    }
-
     onRemoveContent() {
         const myEvent = new CustomEvent('removeContent')
         this.dispatchEvent(myEvent);
@@ -48,21 +43,6 @@ class Content extends HTMLElement {
         const eventAddContent = new CustomEvent('addContent');
 
         this.elements.text.innerHTML = paragraph.content;
-        // console.log(paragraph, styles);
-
-        // Eingetragene Daten in Objekt übertragen.
-        // Da die Daten als Objekt übergeben wurden, dürfte die Änderung auch im Root zu sehen sein
-        this.elements.text.addEventListener('input', evt => {
-            paragraph.content = this.elements.text.innerHTML;
-            this.dispatchEvent(eventChange);
-        })
-
-        // Auf eine Strg-Enter reagieren
-        this.elements.text.addEventListener('keydown', evt => {
-            if (evt.ctrlKey && evt.keyCode == 13) {
-                this.dispatchEvent(eventAddContent);
-            }
-        })
 
         // Klasse vergeben
         this.elements.text.classList.add(paragraph.style);
@@ -80,6 +60,28 @@ class Content extends HTMLElement {
             elStyle.innerHTML += `.${key} {${val}}`;
         })
 
+        // EVENTLISTENER
+
+        // Eingetragene Daten in Objekt übertragen.
+        // Da die Daten als Objekt übergeben wurden, dürfte die Änderung auch im Root zu sehen sein
+        this.elements.text.addEventListener('input', evt => {
+            paragraph.content = this.elements.text.innerHTML;
+            /*
+            const eventChange = new CustomEvent('changeContent', {
+                detail: { paragraph }
+            })
+            this.dispatchEvent(eventChange);
+            */
+        })
+
+        // Auf eine Strg-Enter reagieren
+        this.elements.text.addEventListener('keydown', evt => {
+            if (evt.ctrlKey && evt.keyCode == 13) {
+                this.dispatchEvent(eventAddContent);
+            }
+        })
+
+
         // Wenn das Element angeklickt wird, den Textblock auswählen
         this.addEventListener('click', evt => {
             evt.stopPropagation();
@@ -92,20 +94,36 @@ class Content extends HTMLElement {
             // this.elements.text.focus();
         })
 
-        // Parameter an settings übergeben
-        this.elements.settings.init({
-            style: paragraph.style
+        // Bei einer Eingabe des Styles
+        this.elements.settings.addEventListener('inputType', evt => {
+            paragraph.type = evt.detail.type;
+            this.dispatchEvent(eventChange);
         })
 
+        // Bei einer Änderung der Farbe
+        this.elements.settings.addEventListener('inputColor', evt => {
+            // console.log(evt);
+
+            paragraph.bgColor = evt.detail.bgColor;
+            paragraph.textColor = evt.detail.textColor;
+            this.dispatchEvent(eventChange);
+            
+        })
+        
+        // Parameter an settings übergeben
+        this.elements.settings.init(paragraph)
+        
         // Wenn sich das Styling in den Settings ändert
         this.elements.settings.addEventListener('selectedstyle', evt => {
             paragraph.style = evt.detail.newStyle;
-            this.onChangedStyle();
+            // this.onChangedStyle();
+            this.dispatchEvent(eventChange);
         })
-
+        
         // Wenn der Paragraph entfernt werden soll
         this.elements.settings.addEventListener('removeContent', evt => {
             this.onRemoveContent();
+            this.dispatchEvent(eventChange);
         })
 
     }

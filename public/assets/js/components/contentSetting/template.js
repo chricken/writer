@@ -32,9 +32,25 @@ headerScene.innerHTML = 'Type of Scene: ';
 template.append(headerScene);
 
 const inpScene = document.createElement('input');
+inpScene.className = 'inpType';
 inpScene.placeholder = 'Type of Scene';
 inpScene.type = 'text';
 template.append(inpScene);
+
+const inpColorOverview = document.createElement('input');
+inpColorOverview.type = 'color';
+inpColorOverview.value = '#ccccaa';
+inpColorOverview.className = 'inpColorType';
+template.append(inpColorOverview);
+
+const inpColorText = document.createElement('input');
+inpColorText.type = 'color';
+inpColorText.value = '#222222';
+inpColorText.className = 'inpColorText';
+template.append(inpColorText);
+
+const elBr = document.createElement('br');
+template.append(elBr);
 
 // Element entfernen
 const btnRemoveParagraph = document.createElement('button');

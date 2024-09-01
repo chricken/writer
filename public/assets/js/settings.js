@@ -12,6 +12,7 @@ const settings = {
         h4: 'Fließtextheader',
         h5: 'Kleiner Header',
         b: 'Hervorhebung', 
+        disruptor: 'Störer',
         citation: 'Zitat'
     }
 }

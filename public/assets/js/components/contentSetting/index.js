@@ -10,21 +10,47 @@ class ContentSetting extends HTMLElement {
         this.root.append(template.cloneNode(true));
         this.elements = {
             selStyling: this.root.querySelector('.selStyling'),
+            inpType: this.root.querySelector('.inpType'),
             btnRemove: this.root.querySelector('.btnRemoveParagraph'),
+            inpColorType: this.root.querySelector('.inpColorType'),
+            inpColorText: this.root.querySelector('.inpColorText'),
         }
         // console.log(this.elements);
     }
 
-    init({
-        style = ''
-    }) {
+    init(paragraph) {
         // Selectbox auf den aktuellen style setzen
-        this.elements.selStyling.value = style;
+        if (paragraph.style) this.elements.selStyling.value = paragraph.style;
+        if (paragraph.type) this.elements.inpType.value = paragraph.type;
+        if (paragraph.bgColor) this.elements.inpColorType.value = paragraph.bgColor;
+        if (paragraph.textColor) this.elements.inpColorText.value = paragraph.textColor;
         this.elements.selStyling.addEventListener('change', this.handleChangeStyling.bind(this));
         this.elements.btnRemove.addEventListener('click', this.handleRemoveContent.bind(this));
+        this.elements.inpType.addEventListener('change', this.handleInputType.bind(this));
+        this.elements.inpColorType.addEventListener('change', this.handleChangeColor.bind(this));
+        this.elements.inpColorText.addEventListener('change', this.handleChangeColor.bind(this));
     }
 
-    handleRemoveContent(){
+    handleInputType() {
+        const myEvent = new CustomEvent('inputType', {
+            detail: {
+                type: this.elements.inpType.value
+            }
+        });
+        this.dispatchEvent(myEvent);
+    }
+
+    handleChangeColor() {
+        const myEvent = new CustomEvent('inputColor', {
+            detail: {
+                bgColor: this.elements.inpColorType.value,
+                textColor: this.elements.inpColorText.value
+            }
+        });
+        this.dispatchEvent(myEvent);
+    }
+
+    handleRemoveContent() {
         const myEvent = new CustomEvent('removeContent');
         this.dispatchEvent(myEvent);
     }

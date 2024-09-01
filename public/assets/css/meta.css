@@ -3,3 +3,16 @@
     border-top: 2px solid var(--color-trenner);
     padding-top: var(--abstand);
 }
+
+section-type {
+    border: 2px solid transparent;
+    position: relative;
+    display: block;
+}
+section-type:hover {
+    border: 2px solid rgba(0, 0, 0, .2);
+}
+
+section-type.highlight {
+    border: 2px solid rgba(0, 0, 0, .5);
+}
