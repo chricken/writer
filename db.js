@@ -25,6 +25,7 @@ const db = {
         // Die Story soll nicht wirklich gelöscht werden, sondern nur als "gelöscht" markiert werden, um sie dann ggf. doch noch wiederherstellen zu können
         // Dazu muss zunächst der Datensatz vollständig geladen und dann mit dem deleted-Marker neu gespeichert werden
         const myDB = dbConn.use(settings.dbNames.stories);
+
         return myDB.get(id).then(
             res => {
                 res.deleted = true;

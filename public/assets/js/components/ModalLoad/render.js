@@ -15,6 +15,8 @@ const render = {
         elHeader.innerHTML = 'New Story';
         elStory.append(elHeader);
 
+        console.log(elHeader);
+
         elStory.addEventListener('click', onNew);
 
         data.forEach(story => {
