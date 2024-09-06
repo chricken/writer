@@ -1,12 +1,12 @@
 'use strict';
 
 import settings from "../settings.js";
+import helpers from '../helpers.js';
 
 class Group {
-    constructor(name = '', synonyms = [], desc = '') {
-        Object.assign(this, { name, desc, synonyms });
-        
-        
+    constructor({ id = false, name = '', synonyms = [], desc = '' }) {
+        Object.assign(this, {id,  name, desc, synonyms });
+        if(!this.id) this.id = helpers.getNextId(settings.story.db.groups);
     }
 }
 

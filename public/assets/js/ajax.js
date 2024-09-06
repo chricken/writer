@@ -3,7 +3,14 @@
 import settings from './settings.js';
 import render from './render.js';
 import dom from './dom.js';
+
+// Klassen
 import Story from './classes/Story.js';
+import Person from './classes/Person.js';
+import Group from './classes/Group.js';
+import Place from './classes/Place.js';
+
+
 
 const ajax = {
     newStorySelection() {
@@ -81,6 +88,14 @@ const ajax = {
             res => res.json()
         ).then(
             res => settings.story = res
+        ).then(
+            () => {
+                let db = settings.story.db;
+                db.persons = db.persons.map(person => new Person(person))
+                db.groups = db.groups.map(group => new Group(group))
+                db.places = db.places.map(place => new Place(place))
+                console.log(db);
+            }
         )
     },
 

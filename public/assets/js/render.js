@@ -25,7 +25,7 @@ const render = {
         elements.paragraphs = [];
 
         const contents = settings.story;
-        // console.log('render', contents);
+        console.log('render', contents);
         elements.spalteContents.innerHTML = '';
         elements.spalteTypes.innerHTML = '';
         let activeParagraph = false;
