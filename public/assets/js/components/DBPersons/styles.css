@@ -16,3 +16,11 @@
 textarea {
     vertical-align: top;
 }
+.containerPerson.closed .closedVisible{
+/* .containerPerson *:not(.closedVisible) { */
+    display: block;
+}
+.containerPerson .closedVisible,
+.containerPerson.closed *:not(.closedVisible) {
+    display:none;
+}

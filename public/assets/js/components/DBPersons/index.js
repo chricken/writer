@@ -30,8 +30,26 @@ class DBPersons extends HTMLElement {
         // Anzeige mit den Daten aufbauen
         settings.story.db.persons.forEach(person => {
             const containerPerson = document.createElement('div');
-            containerPerson.className = 'containerPerson';
+            containerPerson.className = 'containerPerson closed';
             inner.append(containerPerson);
+
+            containerPerson.addEventListener('click', evt => {
+                // Soll nicht auf Kind-Elemente reagieren
+                if (
+                    evt.target == evt.currentTarget 
+                    || evt.target.classList.contains('closedVisible')
+                    || evt.target.classList.contains('info')
+                    || evt.target.classList.contains('legend')
+                    || evt.target.parentElement == evt.currentTarget
+                    )
+                    containerPerson.classList.toggle('closed')
+            })
+
+            // name
+            const containerNameOpener = document.createElement('p');
+            containerNameOpener.innerHTML = person.name;
+            containerNameOpener.className = 'closedVisible';
+            containerPerson.append(containerNameOpener);
 
             // ID
             const containerID = document.createElement('p');
@@ -45,6 +63,7 @@ class DBPersons extends HTMLElement {
 
             const elLegendName = document.createElement('span')
             elLegendName.innerHTML = 'Name: ';
+            elLegendName.clasName = 'legend';
             containerName.append(elLegendName);
 
             const inputName = document.createElement('input');
@@ -60,11 +79,12 @@ class DBPersons extends HTMLElement {
             const containerGeb = document.createElement('p');
             containerPerson.append(containerGeb);
 
-            const elLegendGeb= document.createElement('span')
+            const elLegendGeb = document.createElement('span')
             elLegendGeb.innerHTML = 'Geboren: ';
+            elLegendGeb.clasName = 'legend';
             containerGeb.append(elLegendGeb);
 
-            const inputGeb= document.createElement('input');
+            const inputGeb = document.createElement('input');
             inputGeb.type = 'number';
             inputGeb.value = person.birth;
             containerGeb.append(inputGeb);
@@ -77,11 +97,12 @@ class DBPersons extends HTMLElement {
             const containerRace = document.createElement('p');
             containerPerson.append(containerRace);
 
-            const elLegendRace= document.createElement('span')
+            const elLegendRace = document.createElement('span')
             elLegendRace.innerHTML = 'Rasse: ';
+            elLegendRace.clasName = 'legend';
             containerRace.append(elLegendRace);
 
-            const selRace= document.createElement('select');
+            const selRace = document.createElement('select');
             containerRace.append(selRace);
 
             settings.story.db.races.forEach(race => {
@@ -100,11 +121,12 @@ class DBPersons extends HTMLElement {
             const containerDesc = document.createElement('p');
             containerPerson.append(containerDesc);
 
-            const elLegendDesc= document.createElement('span')
+            const elLegendDesc = document.createElement('span')
             elLegendDesc.innerHTML = 'Beschreibung: ';
+            elLegendDesc.clasName = 'legend';
             containerDesc.append(elLegendDesc);
 
-            const inputDesc= document.createElement('textarea');
+            const inputDesc = document.createElement('textarea');
             inputDesc.value = person.desc;
             containerDesc.append(inputDesc);
 
