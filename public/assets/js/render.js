@@ -1,5 +1,8 @@
 'use strict';
 
+// Components
+import '/assets/js/components/DBPersons/index.js';
+
 import settings, { elements } from './settings.js';
 import Scene from './classes/Abschnitt.js';
 import dom from './dom.js';
@@ -25,7 +28,6 @@ const render = {
         elements.paragraphs = [];
 
         const contents = settings.story;
-        console.log('render', contents);
         elements.spalteContents.innerHTML = '';
         elements.spalteTypes.innerHTML = '';
         let activeParagraph = false;
@@ -66,8 +68,8 @@ const render = {
             const elType = dom.create({
                 type: 'section-type',
                 parent: elements.spalteTypes,
-                listeners:{
-                    click(){
+                listeners: {
+                    click() {
                         elParagraph.click()
                     }
                 }
@@ -121,7 +123,27 @@ const render = {
                 }
             })
         })
-    }
+    },
+
+    db() {
+        elements.db.innerHTML = '';
+
+        // Persons
+        const containerPersons = dom.create({
+            type: 'db-persons',
+            parent: elements.db,
+        })
+
+        containerPersons.addEventListener('changed', render.db);
+
+        // Places
+
+        // Groups
+
+        // Races
+
+        // Placetypes
+    },
 }
 
 export default render;

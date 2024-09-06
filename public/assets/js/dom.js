@@ -63,6 +63,7 @@ const dom = {
         elements.btnLoad = dom.$('.linkLoad');
 
         elements.formats = dom.$('#spalteMeta #formats');
+        elements.db = dom.$('#spalteMeta #db');
         elements.spalteTypes = dom.$('#spalteStruktur');
     },
 

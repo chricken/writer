@@ -59,6 +59,8 @@ const ajax = {
                         render.story
                     ).then(
                         render.formats
+                    ).then(
+                        render.db
                     ).catch(
                         console.warn
                     )
@@ -94,7 +96,7 @@ const ajax = {
                 db.persons = db.persons.map(person => new Person(person))
                 db.groups = db.groups.map(group => new Group(group))
                 db.places = db.places.map(place => new Place(place))
-                console.log(db);
+                // console.log(db);
             }
         )
     },
