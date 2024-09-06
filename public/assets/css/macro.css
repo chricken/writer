@@ -32,6 +32,7 @@ nav {
 #spalteContents {
     left:0;
     right: 505px;
+    padding-bottom:50px;
 }
 
 #spalteMeta {

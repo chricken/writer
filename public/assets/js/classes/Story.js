@@ -13,6 +13,15 @@ class Story {
             return obj;
         }, {});
         this.paragraphs = [];
+        
+        this.db = {
+            year: new Date().getFullYear(),
+            persons: [],
+            places: [],
+            groups:[],
+            races:[],
+            placetypes:[]
+        };
     }
 }
 
