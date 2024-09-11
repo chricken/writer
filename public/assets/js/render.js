@@ -2,6 +2,7 @@
 
 // Components
 import '/assets/js/components/DBPersons/index.js';
+import '/assets/js/components/DBPlaces/index.js';
 
 import settings, { elements } from './settings.js';
 import Scene from './classes/Abschnitt.js';
@@ -137,6 +138,12 @@ const render = {
         containerPersons.addEventListener('changed', render.db);
 
         // Places
+        const containerPlaces = dom.create({
+            type: 'db-places',
+            parent: elements.db,
+        })
+
+        containerPlaces.addEventListener('changed', render.db);
 
         // Groups
 

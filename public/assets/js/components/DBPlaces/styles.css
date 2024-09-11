@@ -29,6 +29,7 @@ textarea {
 .containerDB.closed *:not(.closedVisible) {
     display:none;
 }
+
 div[contenteditable="true"]{
     border: 1px solid #ccc;
     padding: 2px;
