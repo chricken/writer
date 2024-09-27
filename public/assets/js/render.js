@@ -3,6 +3,8 @@
 // Components
 import '/assets/js/components/DBPersons/index.js';
 import '/assets/js/components/DBPlaces/index.js';
+import '/assets/js/components/DBRaces/index.js';
+import '/assets/js/components/DBPlacetypes/index.js';
 
 import settings, { elements } from './settings.js';
 import Scene from './classes/Abschnitt.js';
@@ -144,12 +146,24 @@ const render = {
         })
 
         containerPlaces.addEventListener('changed', render.db);
-
+        
         // Groups
-
+        
         // Races
+        const containerRaces = dom.create({
+            type:'db-races',
+            parent: elements.db
+        })
+        
+        containerRaces.addEventListener('changed', render.db);
 
         // Placetypes
+        const containerPlacetypes = dom.create({
+            type:'db-placetypes',
+            parent: elements.db
+        })
+        
+        containerPlacetypes.addEventListener('changed', render.db);
     },
 }
 
