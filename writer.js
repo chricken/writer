@@ -15,7 +15,7 @@ server.use(routes);
 const init = () => {
     db.init().then(
         () => {
-            server.listen(1080, err => {
+            server.listen(1084, err => {
                 if (err) console.log(err);
                 else console.log('Server läuft');
             })
