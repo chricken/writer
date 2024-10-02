@@ -35,7 +35,26 @@ const ajax = {
         })
 
     },
+    login() {
+        let elModal = dom.create({
+            type: 'custom-modal',
+            parent: document.body,
+            attr: {
+                header: 'Login'
+            },
+        })
+        
 
+        dom.create({
+            type: 'modal-login',
+            parent: elModal,
+            listeners: {
+                send(evt) {
+                    console.log(evt.detail);
+                }
+            }
+        })
+    },
     loadStorySelection() {
 
         let elModal = dom.create({
