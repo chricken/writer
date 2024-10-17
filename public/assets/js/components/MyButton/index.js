@@ -25,7 +25,9 @@ class MyButton extends HTMLElement {
         const elButton = this.root.querySelector('button');
 
         elButton.addEventListener('click', () => {
-            const myEvent = new CustomEvent('click');
+            // console.log('button clicked');
+            
+            const myEvent = new CustomEvent('pressed');
             this.dispatchEvent(myEvent);
         })
 

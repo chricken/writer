@@ -8,9 +8,20 @@ class ModalLogin extends HTMLElement {
         this.root = this.attachShadow({ mode: 'closed' });
         this.root.append(template.cloneNode(true));
     }
+    update({ msg = false } = {}) {
+        if (msg) {
+            let elMsg = this.root.querySelector('.msg');
+            elMsg.innerHTML = msg;
+
+            setTimeout(
+                () => elMsg.innerHTML = '',
+                5000
+            )
+        }
+    }
 
     onClick(id) {
-        // console.log(id);
+        console.log(id);
         const myEvent = new CustomEvent('selected', {
             detail: {
             }
@@ -28,7 +39,8 @@ class ModalLogin extends HTMLElement {
         const inpUser = this.root.querySelector('.inpUser');
         inpUser.update({
             legend: 'Username',
-            type: 'text'
+            type: 'text',
+            value: ''
         });
         inpUser.addEventListener('change', evt => {
             userdata.username = evt.detail.value;
@@ -37,7 +49,8 @@ class ModalLogin extends HTMLElement {
         const inpPassword = this.root.querySelector('.inpPassword');
         inpPassword.update({
             legend: 'Passwort',
-            type: 'password'
+            type: 'password',
+            value:''
         });
         inpPassword.addEventListener('change', evt => {
             userdata.password = evt.detail.value;
@@ -48,12 +61,13 @@ class ModalLogin extends HTMLElement {
             legend: 'Absenden',
             type: 'button'
         });
-        btnSend.addEventListener('click', evt => {
-            console.log('clicks');
+        btnSend.addEventListener('pressed', evt => {
+            // console.log('clicks', userdata);
 
             const myEvent = new CustomEvent('send', {
                 detail: userdata
             });
+
             this.dispatchEvent(myEvent);
         })
 

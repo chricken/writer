@@ -1,9 +1,21 @@
 'use strict';
 
+
 const ajax = {
-    loadList() {
-        return fetch('/allStories').then(
+    loadList(userID) {
+        return fetch('/allStories',{
+            method: 'post',
+            headers:{'content-type': 'application/json'},
+            body: JSON.stringify({
+                userID
+            })
+        }).then(
             res => res.json()
+        ).then(
+            res => {
+                console.log('return from Server', res);
+                return res;
+            }
         )
     },
     deleteStory(story) {

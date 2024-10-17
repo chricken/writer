@@ -14,11 +14,35 @@ const db = {
         const myDB = dbConn.use(settings.dbNames.stories);
         return myDB.insert(story);
     },
-    loadAllStories() {
+    loadAllStories({
+        userID = false
+    } = {}) {
         const myDB = dbConn.use(settings.dbNames.stories);
         return myDB.view('dd', 'viewAll').then(
             res => res.rows.map(row => row.value)
+        ).then(
+            res => res.filter(doc => doc.owner == userID)
         )
+    },
+    loadLogins() {
+        const myDB = dbConn.use(settings.dbNames.users);
+
+        return myDB.list({ include_docs: true }).then(
+            res => res.rows.map(row => row.doc)
+        )
+
+    },
+    findUser(userName) {
+        const myDB = dbConn.use(settings.dbNames.users);
+
+        return myDB.find({
+            selector: {
+                user: userName
+            }
+        }).then(
+            res => res.docs
+        )
+
     },
     deleteStory(id) {
         // console.log('db', id);

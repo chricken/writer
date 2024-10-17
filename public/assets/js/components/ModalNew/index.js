@@ -2,6 +2,7 @@
 
 import template from './template.js';
 import ajax from './ajax.js';
+import settings from '/assets/js/settings.js';
 
 class ModalNew extends HTMLElement {
     constructor() {
@@ -18,7 +19,8 @@ class ModalNew extends HTMLElement {
         btnCreate.addEventListener('click',() => {
             const myEvent = new CustomEvent('create', {
                 detail: {
-                    title: inpTitle.value
+                    title: inpTitle.value,
+                    userID: settings.activeUser
                 }
             })
     

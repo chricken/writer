@@ -5,8 +5,12 @@ import db from './db.js';
 
 const router = Router();
 
-router.get('/allStories', (request, response) => {
-    db.loadAllStories().then(
+router.post('/allStories', (request, response) => {
+    console.log('Load all Stories by', request.body);
+
+    db.loadAllStories({
+        userID: request.body.userID
+    }).then(
         res => response.json(res)
     ).catch(
         console.warn
@@ -49,5 +53,30 @@ router.route('/story')
             console.warn
         )
     })
+
+router.post('/login', (request, response) => {
+    console.log('login', request.body);
+
+    // Alle User mit dem Namen suchen
+    db.findUser(request.body.username).then(
+        res => {
+            // Checken, ob der User das richtige Passwort trägt
+            let success = res.some(user => user.pw == request.body.password);
+
+            let payload = {
+                status: 'ok',
+                success,
+                userID: res[0]._id,
+                username: request.body.username
+            }
+
+            // console.log('findUser', res,  payload);
+
+            response.json(payload)
+        }
+    ).catch(
+        console.warn
+    )
+})
 
 export default router;

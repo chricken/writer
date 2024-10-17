@@ -4,6 +4,7 @@ const settings = {
     elements: {},
     story: {},
     activeElement:0,
+    activeUser: false,
     styles: {
         p: 'Fließtext (default)', 
         h1: 'StoryHeader', 

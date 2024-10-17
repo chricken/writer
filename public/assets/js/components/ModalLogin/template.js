@@ -20,6 +20,11 @@ const btnSend = document.createElement('my-button');
 btnSend.className = 'btnSend';
 elFrame.append(btnSend);
 
+const elPrintMsg = document.createElement('div');
+elPrintMsg.className = 'msg container';
+elPrintMsg.innerHTML = '';
+elFrame.append(elPrintMsg);
+
 // Dies funktioniert nicht aus Timing-Gründen: Der Input wurde nicht vollständig implementiert
 // Statt dessen wird diese Funktion im connectedCallback aufgerufen
 /*

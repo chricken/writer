@@ -12,14 +12,16 @@ import './components/SectionType/index.js';
 
 import dom from './dom.js';
 import ajax from './ajax.js';
+import helpers from './helpers.js';
 
 const init = () => {
     dom.mapping();
     dom.appendEventlisteners();
-    
-   ajax.login();
-//    ajax.loadStorySelection();
 
+    ajax.login();
+    //    ajax.loadStorySelection();
+    
+    // console.log(CryptoJS.MD5("Message").toString());
 }
 
 // INIT

@@ -14,11 +14,29 @@ class Modal extends HTMLElement {
         return ['header']
     }
 
+    update({ doNotClose = false } = {}) {
+        console.log('update');
+
+        if (doNotClose) {
+            this.doNotClose = true;
+            const elBG = this.root.querySelector('.bg');
+            console.log(elBG);
+            
+            elBG.removeEventListener('click', this.closeModal.bind(this));
+        }
+
+    }
+
     attributeChangedCallback(attrName, oldVal, currentVal) {
         if (attrName == 'header') {
             const elHeader = this.root.querySelector('h2');
             elHeader.innerHTML = currentVal;
         }
+    }
+    closeModal(evt) {
+        // console.log(evt.target);
+        evt.stopPropagation();
+        this.remove();
     }
 
     connectedCallback() {
@@ -26,16 +44,10 @@ class Modal extends HTMLElement {
         const elBG = this.root.querySelector('.bg');
         const elFrame = this.root.querySelector('.frame');
         const elBtnClose = this.root.querySelector('.btnClose');
+        console.log('connected');
 
-        const closeModal = evt => {
-            console.log(evt.target);
-
-            evt.stopPropagation();
-            this.remove();
-        }
-
-        elBG.addEventListener('click', closeModal);
-        elBtnClose.addEventListener('click', closeModal);
+        if (!this.doNotClose) elBG.addEventListener('click', this.closeModal.bind(this));
+        elBtnClose.addEventListener('click', this.closeModal.bind(this));
         elFrame.addEventListener('click', evt => evt.stopPropagation());
 
     }

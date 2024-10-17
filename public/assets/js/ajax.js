@@ -40,17 +40,48 @@ const ajax = {
             type: 'custom-modal',
             parent: document.body,
             attr: {
-                header: 'Login'
+                header: 'Login',
             },
         })
-        
 
-        dom.create({
+        elModal.update({
+            doNotClose: true
+        })
+
+        const frameLogin = dom.create({
             type: 'modal-login',
             parent: elModal,
             listeners: {
                 send(evt) {
-                    console.log(evt.detail);
+                    evt.detail.password = CryptoJS.MD5(evt.detail.password).toString();
+                    // console.log(evt.detail);
+
+                    fetch('login', {
+                        method: 'post',
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(evt.detail)
+                    }).then(
+                        res => res.json()
+                    ).then(
+                        res => {
+                            if (res.success) {
+                                // Login erfolgreich
+                                elModal.remove();
+                                // console.log(res);
+
+                                settings.activeUser = res.userID;
+                                ajax.loadStorySelection();
+                            } else {
+                                // Nicht angemeldet
+                                frameLogin.update({
+                                    msg: `Anmeldeversuch nicht erfolgreich.`
+                                })
+                            }
+                        }
+                    ).catch(
+                        console.warn
+                    )
+
                 }
             }
         })
@@ -64,8 +95,9 @@ const ajax = {
                 header: 'Load Story'
             }
         })
+        console.log('settings', settings);
 
-        dom.create({
+        let elLoad = dom.create({
             type: 'modal-content-load',
             parent: elModal,
             listeners: {
@@ -92,12 +124,17 @@ const ajax = {
                 }
             }
         })
+
+        elLoad.update({
+            userID: settings.activeUser
+        })
     },
 
     createNewStory(data) {
-        // console.log(data);
+        console.log(data);
         const payload = new Story({
-            title: data.title
+            title: data.title,
+            owner: data.userID
         })
         // console.log(payload);
         settings.story = payload;
